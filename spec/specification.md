@@ -37,7 +37,9 @@ A DID Attested Resource is a JSON object with the following attributes:
 
 **Requirements**
 
-- `id` **MUST** be a [[ref: DID URL]] under the control of the [[ref: DID Controller]]. Its final path segment is the `digestMultibase` of the content.
+- `id` **MUST** be a [[ref: DID URL]] under the control of the [[ref: DID Controller]].  
+  The rightmost path segment of the `id` **MUST** begin with the `digestMultibase` of the `content`.  
+  An optional file extension (e.g., `.json`) **MAY** follow the digest in the path segment.  
 - `content` **MUST** be a JSON object; its schema is profile-specific.
 - `metadata.resourceId` **MUST** equal the computed `digestMultibase` of content.
 - `metadata.resourceType` **MUST** identify the resource type expected in the calling profile.
@@ -71,7 +73,7 @@ Where:
 
 The calculated `digestMultibase` **MUST** matches both the `metadata.resourceId` and the final path segment of the [[ref: DID URL]].
 
-The algorithms used to determine the `digestMultibase`, including `multibase`, `multihash`, `jcs`, `sha256` and `b58btc` are required by v0.1 of this specification. Future versions of this specification could use other algorithms.
+The algorithms listed above to calculate the `digestMultibase`, including `multibase`, `multihash`, `jcs`, `sha256` and `b58btc` **MUST** be be as defined above. Future versions of this specification, identified by a metadata `version` attribute, could use other algorithms.
 
 ### Data Integrity Proof
 
@@ -105,6 +107,12 @@ The `links` JSON attribute is a possibly empty array. Its items **MUST** include
 
 - `type`: a profile-defined relation type.
 - `id`: a [[ref: DID URL]] or URI to the related item.
+
+Its items **MAY** include:
+
+- `timestamp`: A timestamp that **MUST** be a [XMLSCHEMA11-2](https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp) `dateTimeStamp` string value representing the date and time associated with the creation of the linked resource.
+- `mediaType`: A valid media type as listed in the [IANA Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml) registry.
+- `digestMultibase`: The `digestMultibase` of the resource. This **MAY** be used if the linked resource is not itself a DID Attested Resource.
 
 [[ref: Profiles]] **MAY** define additional fields such as `timestamp` or `digestMultibase`.
 
