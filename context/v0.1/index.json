@@ -9,7 +9,7 @@
             "@context": {
                 "@protected": true,
                 "content": {
-                    "@id": "https://identity.foundation/did-attested-resources/v0.1/#content",
+                    "@id": "https://identity.foundation/did-attested-resources/v0.1/#term:content",
                     "@type": "@json"
                 },
                 "metadata": {
