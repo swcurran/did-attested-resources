@@ -7,7 +7,7 @@ A DID Attested Resource is a JSON object with the following attributes:
 ```json
 {
   "@context": [
-    "https://example.com/attested-resource/v1",
+    "https://identity.foundation/did-attested-resources/context/{specVersion}",
     "https://w3id.org/security/data-integrity/v2"
   ],
   "type": ["AttestedResource"],
@@ -16,12 +16,15 @@ A DID Attested Resource is a JSON object with the following attributes:
   "metadata": {
     "resourceId": "{digestMultibase}",
     "resourceType": "",
-    "resourceName": ""
+    "resourceName": "",
+    "resourceVersion": ""
   },
   "links": [
     {
-      "type": "RelatedLink",
       "id": "did:<...> or https://<...>",
+      "mediaType": "",
+      "resourceType": "",
+      "timestamp": "",
       "digestMultibase": "{digestMultibase}"
     }
   ],
@@ -37,15 +40,17 @@ A DID Attested Resource is a JSON object with the following attributes:
 
 **Requirements**
 
+- `@context` **MUST** be an array containing `https://identity.foundation/did-attested-resources/context/v0.1` as its first element. It **MUST** also include the VC Data Integrity context URL `https://w3id.org/security/data-integrity/v2` as the second element.
+- `type` **MUST** be an array including the value `"AttestedResource"`.  
 - `id` **MUST** be a [[ref: DID URL]] under the control of the [[ref: DID Controller]].  
   The rightmost path segment of the `id` **MUST** begin with the `digestMultibase` of the `content`.  
   An optional file extension (e.g., `.json`) **MAY** follow the digest in the path segment.  
 - `content` **MUST** be a JSON object; its schema is profile-specific.
 - `metadata.resourceId` **MUST** equal the computed `digestMultibase` of content.
-- `metadata.resourceType` **MUST** identify the resource type expected in the calling profile.
+- `metadata.resourceType` **SHOULD** identify the resource type expected in the calling profile.
+- `links.id` entries **MAY** be other [[ref: DID URL]]s, enabling chains of DID Attested Resources.
 - `proof.verificationMethod` **MUST** reference a verification method in the Controller’s [[ref: DID Document]], thereby linking the proof to the DID.
 - `proof.cryptosuite` **MUST** have the value `"eddsa-jcs-2022"`
-- `links.id` entries MAY be other [[ref: DID URL]]s, enabling chains of DID Attested Resources.
 
 ### Identifier and Addressing
 
