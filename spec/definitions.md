@@ -13,9 +13,13 @@ in the [[spec:DID-CORE]].
 
 ~ A DID URL as defined in the [[spec:DID-RESOLUTION]] specification. A DID URL is resolved by first resolving the DID, and then the specified resource.
 
+[[def: content]]
+
+~ Arbitrary json object which is immutable and bound to the `ressourceId`.
+
 [[def: metadata]]
 
-~ Additional data provided about the DID Attested Resource, including at least the `type`, and `id`.
+~ Additional data provided about the DID Attested Resource, including at least the `resourceType`, and `resourceId`.
 
 [[def: Profiles, profiles, Profile, profile]]
 
