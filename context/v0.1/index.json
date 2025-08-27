@@ -37,7 +37,8 @@
                         },
                         "mediaType": {
                             "@id": "https://schema.org/encodingFormat"
-                        }
+                        },
+                        "@vocab": "https://www.w3.org/ns/credentials/undefined-term#undefined-terms"
                     }
                 }
             }
