@@ -12,6 +12,7 @@ A DID Attested Resource is a JSON object with the following attributes:
   ],
   "type": ["AttestedResource"],
   "id": "did:<method>:<method-specific-id>/<path...>/{digestMultibase}",
+  "version": "{specVersion}",
   "content": { /* arbitrary JSON resource */ },
   "metadata": {
     "resourceId": "{digestMultibase}",
@@ -45,6 +46,7 @@ A DID Attested Resource is a JSON object with the following attributes:
 - `id` **MUST** be a [[ref: DID URL]] under the control of the [[ref: DID Controller]].  
   The rightmost path segment of the `id` **MUST** begin with the `digestMultibase` of the `content`.  
   An optional file extension (e.g., `.json`) **MAY** follow the digest in the path segment.  
+- `version` **MUST** be a string indicating which spec version was used when creating the resource.
 - `content` **MUST** be a JSON object; its schema is profile-specific.
 - `metadata.resourceId` **MUST** equal the computed `digestMultibase` of content.
 - `metadata.resourceType` **SHOULD** identify the resource type expected in the calling profile.

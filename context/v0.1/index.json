@@ -8,6 +8,9 @@
             "@id": "https://identity.foundation/did-attested-resources/v0.1/#did-attested-resource-specification",
             "@context": {
                 "@protected": true,
+                "version": {
+                    "@id": "https://identity.foundation/did-attested-resources/v0.1/#term:version"
+                },
                 "content": {
                     "@id": "https://identity.foundation/did-attested-resources/v0.1/#term:content",
                     "@type": "@json"
