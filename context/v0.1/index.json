@@ -30,6 +30,7 @@
                     "@context": {
                         "@protected": true,
                         "id": "@id",
+                        "resourceType": "https://w3c-ccg.github.io/did-linked-resources/#resourcetype",
                         "timestamp": "https://www.w3.org/TR/xmlschema11-2/#dateTimeStamp",
                         "digestMultibase": {
                             "@id": "https://w3id.org/security#digestMultibase",
