@@ -19,7 +19,7 @@ in the [[spec:DID-CORE]].
 
 [[def: metadata]]
 
-~ Additional data provided about the DID Attested Resource, including at least the `type`, and `id`.
+~ Additional data provided about the DID Attested Resource, including at least the `resourceType`, and `resourceId`.
 
 [[def: Profiles, profiles, Profile, profile]]
 
